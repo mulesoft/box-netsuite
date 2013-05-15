@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd">
     <box:config name="Box" clientId="${box.clientId}" clientSecret="${box.clientSecret}" doc:name="Box">
-        <box:oauth-callback-config domain="localhost" localPort="8080" remotePort="8080" path="callback"/>
+        <box:oauth-callback-config domain="${host}" localPort="8081" remotePort="8081" path="callback"/>
     </box:config>
     <objectstore:config name="ObjectStore" objectStore-ref="_defaultInMemoryObjectStore" doc:name="ObjectStore"/>
     <netsuite:config name="Netsuite" email="netsuite.sandbox@mulesoft.com" password="Mul3NetSuite" account="TSTDRV917625" roleId="3" doc:name="Netsuite">
@@ -25,7 +25,9 @@ http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/
     <data-mapper:config name="x_grf" transformationGraphPath="x.grf" doc:name="DataMapper"/>
     <flow name="authorize" doc:name="authorize">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="auth" doc:name="HTTP"/>
+        <tracking:custom-event event-name="STARTING OAUTH AUTH CYCLE" doc:name="Custom Business Event"/>
         <box:authorize config-ref="Box" doc:name="Box"/>
+        <tracking:custom-event event-name="COMPLETED OAUTH CYCLE" doc:name="Custom Business event"/>
     </flow>
     <!-- <flow name="listenForEvents" doc:name="listenForEvents">
         <box:listen-events config-ref="Box" doc:name="Box (Streaming)"/>
@@ -53,31 +55,42 @@ http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/
     </flow>
     <flow name="download" doc:name="download">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="boxdownload" doc:name="HTTP"/>
-        <logger message="DOWNLOADING FOLDER WITH ID : #[message.inboundProperties['folder-id']]" level="INFO" doc:name="Logger"/>
-        <box:download config-ref="Box" accessTokenId="${box.accessTokenID}" doc:name="Box" fileId="#[message.inboundProperties['folder-id']]"/>
-        <object-to-string-transformer encoding="US-ASCII" mimeType="text/plain" doc:name="Object to String"/>
+        <logger message="DOWNLOADING FOLDER WITH ID : #[message.inboundProperties['doc-id']]" level="INFO" doc:name="Logger"/>
+        <box:download config-ref="Box" accessTokenId="${box.accessTokenID}" doc:name="Box" fileId="#[message.inboundProperties['doc-id']]"/>
+        <object-to-string-transformer encoding="US-ASCII" mimeType="text/plain" doc:name="parseFile"/>
         <logger level="INFO" doc:name="Logger" message="#[payload]"/>
-        <flow-ref name="postToNetSuite" doc:name="Flow Reference"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <flow-ref name="postToNetSuite" doc:name="postToNS"/>
+        <json:object-to-json-transformer doc:name="formatResponse"/>
     </flow>
     <flow name="testNSMapping" doc:name="testNSMapping">
-        <file:inbound-endpoint path="/Users/tom/dev/mule/apps/3.4/box-to-netsuite/src/main/resources/input" moveToDirectory="/Users/tom/dev/mule/apps/3.4/box-to-netsuite/src/main/resources/output" pollingFrequency="5000" responseTimeout="10000" doc:name="File" tracking:enable-default-events="true"/>
+        <file:inbound-endpoint path="src/main/resources/input" moveToDirectory="src/main/resources/output" pollingFrequency="5000" responseTimeout="10000" doc:name="File" tracking:enable-default-events="true"/>
         <logger message="Consumed new file" level="INFO" doc:name="Logger"/>
-        <flow-ref name="postToNetSuite" doc:name="Flow Reference"/>
+        <tracking:custom-event event-name="RECEIVED INBOUND ACCOUNTS FILE" doc:name="Custom Business event"/>
+        <flow-ref name="postToNetSuite" doc:name="postFileToNS"/>
     </flow>
     <sub-flow name="postToNetSuite" doc:name="postToNetSuite">
         <data-mapper:transform config-ref="csvtomap_grf" doc:name="DataMapper"/>
         <foreach doc:name="For Each">
             <logger message="NEXT ACCT NAME : #[payload.name]" level="INFO" doc:name="Logger"/>
+            <tracking:custom-event event-name="PROCESSING NEXT ACCT NAME : #[payload.name]" doc:name="Custom Business event"/>
             <enricher target="#[variable:existingAcct]" doc:name="Message Enricher">
                 <netsuite:find-first-record config-ref="Netsuite" recordType="ACCOUNT" expression="is(name, '#[payload.name]')" doc:name="Netsuite"/>
             </enricher>
             <logger message="EXISTING ACCT NULL? #[existingAcct is NullPayload]" level="INFO" doc:name="Logger"/>
+            <tracking:custom-event event-name="FILTERING OUT EXISTING ACCOUNT..." doc:name="Custom Business event">
+                <tracking:meta-data key="ACCT NAME" value="#[payload.name]"/>
+            </tracking:custom-event>
             <expression-filter expression="#[existingAcct is NullPayload]" doc:name="Filter Out Existing Accounts"/>
+            <tracking:custom-event event-name="ACCOUNT NEEDS TO BE CREATED" doc:name="Custom Business event">
+                <tracking:meta-data key="ACCT NAME" value="#[payload.name]"/>
+            </tracking:custom-event>
             <logger message="CREATE NEW RECORD..." level="INFO" doc:name="Logger"/>
             <data-mapper:transform config-ref="x_grf" doc:name="DataMapper"/>
             <netsuite:add-record config-ref="Netsuite" recordType="ACCOUNT" doc:name="Netsuite"/>
-            <json:object-to-json-transformer doc:name="Object to JSON"/>
+            <json:object-to-json-transformer doc:name="Format Response"/>
+            <tracking:custom-event event-name="RESPONSE FROM NETSUITE" doc:name="Custom Business event">
+                <tracking:meta-data key="RESPONSE" value="#[payload]"/>
+            </tracking:custom-event>
             <logger message="ACCT CREATE RESPONSE : #[payload]" level="INFO" doc:name="Logger"/>
         </foreach>
     </sub-flow>
