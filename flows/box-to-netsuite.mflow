@@ -10,10 +10,10 @@
             <property value="${box.clientId}" name="clientId"/>
             <property value="1" name="auxiliary;index"/>
             <property-collection name="@http://www.mulesoft.org/schema/mule/box/oauth-callback-config;0">
-                <property value="${host}" name="domain"/>
+                <property value="${fullDomain}" name="domain"/>
                 <property value="callback" name="path"/>
-                <property value="8081" name="localPort"/>
-                <property value="8081" name="remotePort"/>
+                <property value="${http.port}" name="localPort"/>
+                <property value="${remote.port}" name="remotePort"/>
                 <property value="2" name="auxiliary;index"/>
                 <property value="2" name="auxiliary;wrapIn"/>
             </property-collection>
@@ -34,14 +34,14 @@
     <global-element type="http://www.mulesoft.org/schema/mule/netsuite/config" name="Netsuite" entity-id="Netsuite#3">
         <properties>
             <property name="defaultEndpoint"/>
-            <property value="netsuite.sandbox@mulesoft.com" name="email"/>
+            <property value="${ns.email}" name="email"/>
             <property value="true" name="auxiliary;metauseMetaData"/>
             <property value="Netsuite" name="name"/>
-            <property value="TSTDRV917625" name="account"/>
-            <property value="Mul3NetSuite" name="password"/>
+            <property value="${ns.acct}" name="account"/>
+            <property value="${ns.pswd}" name="password"/>
             <property name="endpoint"/>
             <property value="4" name="auxiliary;index"/>
-            <property value="3" name="roleId"/>
+            <property value="${ns.role}" name="roleId"/>
             <property-collection name="@http://www.mulesoft.org/schema/mule/netsuite/connection-pooling-profile;0">
                 <property value="WHEN_EXHAUSTED_GROW" name="exhaustedAction"/>
                 <property value="5" name="auxiliary;index"/>
@@ -137,7 +137,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="getRootFolder" entity-id="flow#2">
+    <flow SubFlow="false" name="getFolder" entity-id="flow#2">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -183,7 +183,7 @@
                     <property value="${box.accessTokenID}" name="accessTokenId"/>
                     <property value="Box" name="config-ref"/>
                     <property value="16" name="auxiliary;index"/>
-                    <property value="871657580" name="folderId"/>
+                    <property value="#[message.inboundProperties['folder-id']]" name="folderId"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#1">

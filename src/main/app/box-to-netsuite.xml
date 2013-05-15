@@ -14,10 +14,10 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd">
     <box:config name="Box" clientId="${box.clientId}" clientSecret="${box.clientSecret}" doc:name="Box">
-        <box:oauth-callback-config domain="${host}" localPort="8081" remotePort="8081" path="callback"/>
+        <box:oauth-callback-config domain="${fullDomain}" localPort="${http.port}" remotePort="${remote.port}" path="callback"/>
     </box:config>
     <objectstore:config name="ObjectStore" objectStore-ref="_defaultInMemoryObjectStore" doc:name="ObjectStore"/>
-    <netsuite:config name="Netsuite" email="netsuite.sandbox@mulesoft.com" password="Mul3NetSuite" account="TSTDRV917625" roleId="3" doc:name="Netsuite">
+    <netsuite:config name="Netsuite" email="${ns.email}" password="${ns.pswd}" account="${ns.acct}" roleId="${ns.role}" doc:name="Netsuite">
         <netsuite:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
     </netsuite:config>
     <data-mapper:config name="test_grf" transformationGraphPath="test.grf" doc:name="DataMapper"/>
@@ -48,9 +48,9 @@ http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/
             <logger message="RESPONSE FROM FILE DOWNLOAD : #[payload]" level="INFO" doc:name="Logger"/>
         </foreach>
     </flow> -->
-    <flow name="getRootFolder" doc:name="getRootFolder">
+    <flow name="getFolder" doc:name="getFolder">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="boxfolder" doc:name="HTTP"/>
-        <box:get-folder config-ref="Box" accessTokenId="${box.accessTokenID}" doc:name="Box" folderId="871657580"/>
+        <box:get-folder config-ref="Box" accessTokenId="${box.accessTokenID}" doc:name="Box" folderId="#[message.inboundProperties['folder-id']]"/>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>
     <flow name="download" doc:name="download">
