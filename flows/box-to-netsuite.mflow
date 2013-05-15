@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="box-to-netsuite">
+    <global-element type="http://www.mulesoft.org/schema/mule/box/config" name="Box" entity-id="Box#4">
+        <properties>
+            <property name="uploadUrl"/>
+            <property name="baseUrl"/>
+            <property name="useGzip"/>
+            <property value="Box" name="name"/>
+            <property value="${box.clientSecret}" name="clientSecret"/>
+            <property value="${box.clientId}" name="clientId"/>
+            <property value="1" name="auxiliary;index"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/box/oauth-callback-config;0">
+                <property value="localhost" name="domain"/>
+                <property value="callback" name="path"/>
+                <property value="8080" name="localPort"/>
+                <property value="8080" name="remotePort"/>
+                <property value="2" name="auxiliary;index"/>
+                <property value="2" name="auxiliary;wrapIn"/>
+            </property-collection>
+        </properties>
+    </global-element>
+    <global-element type="http://www.mulesoft.org/schema/mule/objectstore/config" name="ObjectStore" entity-id="ObjectStore#1">
+        <properties>
+            <property name="entryTtl"/>
+            <property name="partition"/>
+            <property name="persistent"/>
+            <property value="ObjectStore" name="name"/>
+            <property name="expirationInterval"/>
+            <property value="_defaultInMemoryObjectStore" name="objectStore-ref"/>
+            <property name="maxEntries"/>
+            <property value="3" name="auxiliary;index"/>
+        </properties>
+    </global-element>
+    <global-element type="http://www.mulesoft.org/schema/mule/netsuite/config" name="Netsuite" entity-id="Netsuite#3">
+        <properties>
+            <property name="defaultEndpoint"/>
+            <property value="netsuite.sandbox@mulesoft.com" name="email"/>
+            <property value="true" name="auxiliary;metauseMetaData"/>
+            <property value="Netsuite" name="name"/>
+            <property value="TSTDRV917625" name="account"/>
+            <property value="Mul3NetSuite" name="password"/>
+            <property name="endpoint"/>
+            <property value="4" name="auxiliary;index"/>
+            <property value="3" name="roleId"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/netsuite/connection-pooling-profile;0">
+                <property value="WHEN_EXHAUSTED_GROW" name="exhaustedAction"/>
+                <property value="5" name="auxiliary;index"/>
+                <property value="5" name="auxiliary;wrapIn"/>
+                <property value="INITIALISE_ONE" name="initialisationPolicy"/>
+            </property-collection>
+        </properties>
+    </global-element>
+    <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#3">
+        <properties>
+            <property value="test_grf" name="name"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="test.grf" name="transformationGraphPath"/>
+        </properties>
+    </global-element>
+    <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#4">
+        <properties>
+            <property value="csvtomap_grf" name="name"/>
+            <property value="7" name="auxiliary;index"/>
+            <property value="csvtomap.grf" name="transformationGraphPath"/>
+        </properties>
+    </global-element>
+    <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#5">
+        <properties>
+            <property value="x_grf" name="name"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="x.grf" name="transformationGraphPath"/>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="authorize" entity-id="flow#1">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="9" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property value="auth" name="path"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="10" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/box/box-connector" name="Box" entity-id="Box#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="authorizationUrl"/>
+                    <property name="accessTokenUrl"/>
+                    <property name="state"/>
+                    <property value="http://www.mulesoft.org/schema/mule/box/authorize" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Box" name="config-ref"/>
+                    <property value="11" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="getRootFolder" entity-id="flow#2">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="16" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property value="boxfolder" name="path"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="17" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/box/box-connector" name="Box" entity-id="Box#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="http://www.mulesoft.org/schema/mule/box/get-folder" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="${box.accessTokenID}" name="accessTokenId"/>
+                    <property value="Box" name="config-ref"/>
+                    <property value="18" name="auxiliary;index"/>
+                    <property value="871657580" name="folderId"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="sourceClass"/>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property name="mapper-ref"/>
+                    <property name="mimeType"/>
+                    <property value="19" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="download" entity-id="flow#3">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="20" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#3">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#3">
+                <graphicalData height="169" width="68" y="524" x="19"/>
+                <properties>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property value="boxdownload" name="path"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
+                <graphicalData height="67" width="68" y="524" x="147"/>
+                <properties>
+                    <property value="DOWNLOADING FOLDER WITH ID : #[message.inboundProperties['folder-id']]" name="message"/>
+                    <property value="" name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/box/box-connector" name="Box" entity-id="Box#3">
+                <graphicalData height="67" width="68" y="524" x="275"/>
+                <properties>
+                    <property value="#[message.inboundProperties['folder-id']]" name="fileId"/>
+                    <property name="updated"/>
+                    <property value="http://www.mulesoft.org/schema/mule/box/download" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="${box.accessTokenID}" name="accessTokenId"/>
+                    <property value="Box" name="config-ref"/>
+                    <property value="22" name="auxiliary;index"/>
+                    <property value="" name="version"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="Object to String#1">
+                <graphicalData height="67" width="98" y="524" x="403"/>
+                <properties>
+                    <property value="" name="returnClass"/>
+                    <property value="false" name="ignoreBadInput"/>
+                    <property name="updated"/>
+                    <property value="US-ASCII" name="encoding"/>
+                    <property value="text/plain" name="mimeType"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
+                <graphicalData height="67" width="68" y="524" x="561"/>
+                <properties>
+                    <property value="#[payload]" name="message"/>
+                    <property value="" name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property name="updated"/>
+                    <property value="23" name="auxiliary;index"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="Flow Reference" entity-id="Flow Reference#1">
+                <graphicalData height="67" width="95" y="524" x="689"/>
+                <properties>
+                    <property name="updated"/>
+                    <property value="postToNetSuite" name="name"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="testNSMapping" entity-id="flow#4">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="24" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#4">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/file/endpoint" name="File" entity-id="File#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="reverseOrder"/>
+                    <property name="moveToPattern"/>
+                    <property value="5000" name="pollingFrequency"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="comparator"/>
+                    <property name="disableTransportTransformer"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="true" name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property value="/Users/tom/dev/mule/apps/3.4/box-to-netsuite/src/main/resources/output" name="moveToDirectory"/>
+                    <property name="address"/>
+                    <property name="fileAge"/>
+                    <property value="/Users/tom/dev/mule/apps/3.4/box-to-netsuite/src/main/resources/input" name="path"/>
+                    <property name="encoding"/>
+                    <property name="outputPattern"/>
+                    <property name="mimeType"/>
+                    <property value="25" name="auxiliary;index"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#3">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="Consumed new file" name="message"/>
+                    <property name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property value="26" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="Flow Reference" entity-id="Flow Reference#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="postToNetSuite" name="name"/>
+                    <property value="27" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="true" name="postToNetSuite" entity-id="flow#5">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="31" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#5">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="DataMapper" entity-id="DataMapper#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="stream"/>
+                    <property name="input-ref"/>
+                    <property value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="pipeSize"/>
+                    <property value="csvtomap_grf" name="config-ref"/>
+                    <property value="32" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="For Each" entity-id="For Each#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="counterVariableName"/>
+                    <property name="rootMessageVariableName"/>
+                    <property name="batchSize"/>
+                    <property name="collection"/>
+                    <property value="33" name="auxiliary;index"/>
+                </properties>
+                <compartment entity-id="compartment#1">
+                    <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#6">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#4">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="NEXT ACCT NAME : #[payload.name]" name="message"/>
+<property name="category"/>
+<property value="INFO" name="level"/>
+<property value="34" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                        <scope type="org.mule.tooling.ui.modules.core.scope.enricher" name="Message Enricher" entity-id="Message Enricher#1">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property name="source"/>
+<property value="#[variable:existingAcct]" name="target"/>
+<property value="35" name="auxiliary;index"/>
+                            </properties>
+                            <compartment entity-id="compartment#2">
+<lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#7">
+    <pattern type="http://www.mulesoft.org/schema/mule/netsuite/netsuite-connector" name="Netsuite" entity-id="Netsuite#1">
+        <graphicalData height="0" width="0" y="0" x="0"/>
+        <properties>
+            <property name=""/>
+            <property value="is(name, '#[payload.name]')" name="expression"/>
+            <property name="email"/>
+            <property value="http://www.mulesoft.org/schema/mule/netsuite/find-first-record" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+            <property name="account"/>
+            <property value="ACCOUNT" name="recordType"/>
+            <property name="password"/>
+            <property value="Netsuite" name="config-ref"/>
+            <property name="endpoint"/>
+            <property value="36" name="auxiliary;index"/>
+            <property name="roleId"/>
+        </properties>
+    </pattern>
+</lane>
+                            </compartment>
+                        </scope>
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#5">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="EXISTING ACCT NULL? #[existingAcct is NullPayload]" name="message"/>
+<property name="category"/>
+<property value="INFO" name="level"/>
+<property value="37" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="org.mule.tooling.ui.modules.core.filter.Expression" name="Filter Out Existing Accounts" entity-id="Expression#1">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="#[existingAcct is NullPayload]" name="expression"/>
+<property name="customEvaluator"/>
+<property name="evaluator"/>
+<property value="38" name="auxiliary;index"/>
+<property name="nullReturnsTrue"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#6">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="CREATE NEW RECORD..." name="message"/>
+<property name="category"/>
+<property value="INFO" name="level"/>
+<property value="39" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="DataMapper" entity-id="DataMapper#2">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property name="returnClass"/>
+<property name="stream"/>
+<property name="input-ref"/>
+<property value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+<property name="pipeSize"/>
+<property value="x_grf" name="config-ref"/>
+<property value="40" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/netsuite/netsuite-connector" name="Netsuite" entity-id="Netsuite#2">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property name=""/>
+<property name="email"/>
+<property value="http://www.mulesoft.org/schema/mule/netsuite/add-record" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+<property name="account"/>
+<property value="ACCOUNT" name="recordType"/>
+<property name="password"/>
+<property value="Netsuite" name="config-ref"/>
+<property name="endpoint"/>
+<property value="41" name="auxiliary;index"/>
+<property name="roleId"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#3">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property name="sourceClass"/>
+<property name="returnClass"/>
+<property name="ignoreBadInput"/>
+<property name="encoding"/>
+<property name="mapper-ref"/>
+<property name="mimeType"/>
+<property value="42" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#7">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="ACCT CREATE RESPONSE : #[payload]" name="message"/>
+<property name="category"/>
+<property value="INFO" name="level"/>
+<property value="43" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

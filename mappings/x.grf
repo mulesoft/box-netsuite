@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="tom" created="Tue May 14 14:49:13 PDT 2013" guiVersion="3.3.2" id="1368571777663" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Tue May 14 14:49:13 PDT 2013" modifiedBy="tom" name="x_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/Account" _dataStructure="OBJECT" _id="__id" _type="Input" id="a5a860b2-e27f-4c36-af0b-9dfcbbc1195d">
+<Record fieldDelimiter="|" name="Account" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/Account/id" containerType="SINGLE" label="id" name="id" type="string"/>
+<Field __sourcePath="{}/Account/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __sourcePath="{}/Account/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __sourcePath="{}/Account/description" containerType="SINGLE" label="description" name="description" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/ACCOUNT" _dataStructure="OBJECT" _id="__id" _type="Output" id="4c65e798-7cf4-4875-93d7-0312a3467583">
+<Record fieldDelimiter="|" name="ACCOUNT" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/exchangeRate" containerType="SINGLE" label="exchangeRate" name="exchangeRate" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/acctType" containerType="SINGLE" label="acctType" name="acctType" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/externalId" containerType="SINGLE" label="externalId" name="externalId" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/includeChildren" containerType="SINGLE" label="includeChildren" name="includeChildren" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/revalue" containerType="SINGLE" label="revalue" name="revalue" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/isInactive" containerType="SINGLE" label="isInactive" name="isInactive" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/generalRate" containerType="SINGLE" label="generalRate" name="generalRate" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/description" containerType="SINGLE" label="description" name="description" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/acctName" containerType="SINGLE" label="acctName" name="acctName" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/acctNumber" containerType="SINGLE" label="acctNumber" name="acctNumber" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/internalId" containerType="SINGLE" label="internalId" name="internalId" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/cashFlowRate" containerType="SINGLE" label="cashFlowRate" name="cashFlowRate" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/openingBalance" containerType="SINGLE" label="openingBalance" name="openingBalance" type="number"/>
+<Field __sourcePath="{}/ACCOUNT/curDocNum" containerType="SINGLE" label="curDocNum" name="curDocNum" type="number"/>
+<Field __sourcePath="{}/ACCOUNT/inventory" containerType="SINGLE" label="inventory" name="inventory" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/eliminate" containerType="SINGLE" label="eliminate" name="eliminate" type="boolean"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; READER" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="id" trim="true" xpath="id"/>
+  <Mapping cloverField="name" trim="true" xpath="name"/>
+  <Mapping cloverField="type" trim="true" xpath="type"/>
+  <Mapping cloverField="description" trim="true" xpath="description"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ACCOUNT xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <exchangeRate>$0.exchangeRate</exchangeRate>
+  <acctType>$0.acctType</acctType>
+  <externalId>$0.externalId</externalId>
+  <includeChildren>$0.includeChildren</includeChildren>
+  <revalue>$0.revalue</revalue>
+  <isInactive>$0.isInactive</isInactive>
+  <generalRate>$0.generalRate</generalRate>
+  <description>$0.description</description>
+  <acctName>$0.acctName</acctName>
+  <acctNumber>$0.acctNumber</acctNumber>
+  <internalId>$0.internalId</internalId>
+  <cashFlowRate>$0.cashFlowRate</cashFlowRate>
+  <openingBalance>$0.openingBalance</openingBalance>
+  <curDocNum>$0.curDocNum</curDocNum>
+  <inventory>$0.inventory</inventory>
+  <eliminate>$0.eliminate</eliminate>
+</ACCOUNT>]]></attr>
+<attr name="__typeName"><![CDATA[ACCOUNT]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/netsuite/add-record]]></attr>
+<attr name="__connectorName"><![CDATA[Netsuite]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'Account' -&gt; 'ACCOUNT'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.description = input.description;
+output.acctType = input.type;
+output.acctNumber = input.id;
+output.acctName = input.name;]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="a5a860b2-e27f-4c36-af0b-9dfcbbc1195d" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="4c65e798-7cf4-4875-93d7-0312a3467583" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+</Phase>
+</Graph>

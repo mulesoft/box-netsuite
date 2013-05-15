@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="tom" created="Mon May 13 16:46:50 PDT 2013" guiVersion="3.3.2" id="1368547868359" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Mon May 13 16:46:50 PDT 2013" modifiedBy="tom" name="xyz_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/ACCOUNT" _dataStructure="OBJECT" _id="__id" _type="Output" id="77f83a40-624b-4431-b972-472ace6d3ca8">
+<Record fieldDelimiter="|" name="ACCOUNT" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/exchangeRate" containerType="SINGLE" label="exchangeRate" name="exchangeRate" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/acctType" containerType="SINGLE" label="acctType" name="acctType" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/externalId" containerType="SINGLE" label="externalId" name="externalId" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/includeChildren" containerType="SINGLE" label="includeChildren" name="includeChildren" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/revalue" containerType="SINGLE" label="revalue" name="revalue" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/isInactive" containerType="SINGLE" label="isInactive" name="isInactive" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/generalRate" containerType="SINGLE" label="generalRate" name="generalRate" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/description" containerType="SINGLE" label="description" name="description" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/acctName" containerType="SINGLE" label="acctName" name="acctName" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/acctNumber" containerType="SINGLE" label="acctNumber" name="acctNumber" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/internalId" containerType="SINGLE" label="internalId" name="internalId" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/cashFlowRate" containerType="SINGLE" label="cashFlowRate" name="cashFlowRate" type="string"/>
+<Field __sourcePath="{}/ACCOUNT/openingBalance" containerType="SINGLE" label="openingBalance" name="openingBalance" type="number"/>
+<Field __sourcePath="{}/ACCOUNT/curDocNum" containerType="SINGLE" label="curDocNum" name="curDocNum" type="number"/>
+<Field __sourcePath="{}/ACCOUNT/inventory" containerType="SINGLE" label="inventory" name="inventory" type="boolean"/>
+<Field __sourcePath="{}/ACCOUNT/eliminate" containerType="SINGLE" label="eliminate" name="eliminate" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="9de264b3-028f-41fb-88b2-20b49dcefe4a">
+<Record fieldDelimiter="," name="accounts" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="Account-Type" name="Account_Type" size="10" type="string"/>
+<Field containerType="SINGLE" label="Account-Number" name="Account_Number" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="Account-Name" name="Account_Name" size="10" type="string"/>
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="CSV READER" guiWidth="0" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="true" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+<attr name="__dataSourceDefinition"><![CDATA[${Project_Home}/src/main/resources/input/accounts.csv]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="__typeName"><![CDATA[ACCOUNT]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/netsuite/add-record]]></attr>
+<attr name="__connectorName"><![CDATA[Netsuite]]></attr>
+</Node>
+</Phase>
+</Graph>

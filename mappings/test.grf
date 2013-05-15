@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="tom" created="Fri May 10 15:28:28 PDT 2013" guiVersion="3.3.2" id="1368472414640" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Fri May 10 15:28:28 PDT 2013" modifiedBy="tom" name="test_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="a54e8d3c-f978-4a7b-a0d4-94df31c16803">
+<Record fieldDelimiter="|" name="INVENTORY_ITEM" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field containerType="SINGLE" label="trackLandedCost" name="trackLandedCost" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="relatedItemsDescription" name="relatedItemsDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="purchaseDescription" name="purchaseDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="shippingCost" name="shippingCost" size="10" type="number"/>
+<Field containerType="SINGLE" label="mpn" name="mpn" size="10" type="string"/>
+<Field containerType="SINGLE" label="autoReorderPoint" name="autoReorderPoint" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="onSpecial" name="onSpecial" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="isInactive" name="isInactive" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="isSpecialOrderItem" name="isSpecialOrderItem" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="costEstimateUnits" name="costEstimateUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="vsoePrice" name="vsoePrice" size="10" type="number"/>
+<Field containerType="SINGLE" label="handlingCostUnits" name="handlingCostUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="offerSupport" name="offerSupport" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="onHandValueMli" name="onHandValueMli" size="10" type="number"/>
+<Field containerType="SINGLE" label="quantityCommittedUnits" name="quantityCommittedUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="stockDescription" name="stockDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="useMarginalRates" name="useMarginalRates" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="manufacturerZip" name="manufacturerZip" size="10" type="string"/>
+<Field containerType="SINGLE" label="fixedLotSize" name="fixedLotSize" size="10" type="number"/>
+<Field containerType="SINGLE" label="reorderMultiple" name="reorderMultiple" size="10" type="number"/>
+<Field containerType="SINGLE" label="matchBillToReceipt" name="matchBillToReceipt" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="noPriceMessage" name="noPriceMessage" size="10" type="string"/>
+<Field containerType="SINGLE" label="excludeFromSitemap" name="excludeFromSitemap" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="pricesIncludeTax" name="pricesIncludeTax" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="isDropShipItem" name="isDropShipItem" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="reorderPoint" name="reorderPoint" size="10" type="number"/>
+<Field containerType="SINGLE" label="metaTagHtml" name="metaTagHtml" size="10" type="string"/>
+<Field containerType="SINGLE" label="pageTitle" name="pageTitle" size="10" type="string"/>
+<Field containerType="SINGLE" label="copyDescription" name="copyDescription" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="quantityOnOrder" name="quantityOnOrder" size="10" type="number"/>
+<Field containerType="SINGLE" label="shoppingDotComCategory" name="shoppingDotComCategory" size="10" type="string"/>
+<Field containerType="SINGLE" label="costEstimate" name="costEstimate" size="10" type="number"/>
+<Field containerType="SINGLE" label="nexTagCategory" name="nexTagCategory" size="10" type="string"/>
+<Field containerType="SINGLE" label="sitemapPriority" name="sitemapPriority" size="10" type="string"/>
+<Field containerType="SINGLE" label="safetyStockLevelDays" name="safetyStockLevelDays" size="10" type="number"/>
+<Field containerType="SINGLE" label="seasonalDemand" name="seasonalDemand" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="averageCost" name="averageCost" size="10" type="number"/>
+<Field containerType="SINGLE" label="isTaxable" name="isTaxable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="externalId" name="externalId" size="10" type="string"/>
+<Field containerType="SINGLE" label="currency" name="currency" size="10" type="string"/>
+<Field containerType="SINGLE" label="originalItemSubtype" name="originalItemSubtype" size="10" type="string"/>
+<Field containerType="SINGLE" label="isOnline" name="isOnline" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="scheduleBQuantity" name="scheduleBQuantity" size="10" type="number"/>
+<Field containerType="SINGLE" label="storeDetailedDescription" name="storeDetailedDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="invtCountInterval" name="invtCountInterval" size="10" type="number"/>
+<Field containerType="SINGLE" label="outOfStockBehavior" name="outOfStockBehavior" size="10" type="string"/>
+<Field containerType="SINGLE" label="featuredDescription" name="featuredDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="costEstimateType" name="costEstimateType" size="10" type="string"/>
+<Field containerType="SINGLE" label="preferredStockLevel" name="preferredStockLevel" size="10" type="number"/>
+<Field containerType="SINGLE" label="countryOfManufacture" name="countryOfManufacture" size="10" type="string"/>
+<Field containerType="SINGLE" label="multManufactureAddr" name="multManufactureAddr" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="storeDisplayName" name="storeDisplayName" size="10" type="string"/>
+<Field containerType="SINGLE" label="outOfStockMessage" name="outOfStockMessage" size="10" type="string"/>
+<Field containerType="SINGLE" label="vendorName" name="vendorName" size="10" type="string"/>
+<Field containerType="SINGLE" label="weightUnit" name="weightUnit" size="10" type="string"/>
+<Field containerType="SINGLE" label="dontShowPrice" name="dontShowPrice" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="salesDescription" name="salesDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="minimumQuantity" name="minimumQuantity" size="10" type="number"/>
+<Field containerType="SINGLE" label="costUnits" name="costUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="shipIndividually" name="shipIndividually" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="quantityAvailableUnits" name="quantityAvailableUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="itemId" name="itemId" size="10" type="string"/>
+<Field containerType="SINGLE" label="leadTime" name="leadTime" size="10" type="number"/>
+<Field containerType="SINGLE" label="totalValue" name="totalValue" size="10" type="number"/>
+<Field containerType="SINGLE" label="shopzillaCategoryId" name="shopzillaCategoryId" size="10" type="number"/>
+<Field containerType="SINGLE" label="preferredStockLevelUnits" name="preferredStockLevelUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="preferenceCriterion" name="preferenceCriterion" size="10" type="string"/>
+<Field containerType="SINGLE" label="quantityOnHand" name="quantityOnHand" size="10" type="number"/>
+<Field containerType="SINGLE" label="preferredStockLevelDays" name="preferredStockLevelDays" size="10" type="number"/>
+<Field containerType="SINGLE" label="originalItemType" name="originalItemType" size="10" type="string"/>
+<Field containerType="SINGLE" label="producer" name="producer" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="scheduleBCode" name="scheduleBCode" size="10" type="string"/>
+<Field containerType="SINGLE" label="reorderPointUnits" name="reorderPointUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="shippingCostUnits" name="shippingCostUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="safetyStockLevelUnits" name="safetyStockLevelUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="costingMethodDisplay" name="costingMethodDisplay" size="10" type="string"/>
+<Field containerType="SINGLE" label="quantityOnOrderUnits" name="quantityOnOrderUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="quantityOnHandUnits" name="quantityOnHandUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="costingMethod" name="costingMethod" size="10" type="string"/>
+<Field containerType="SINGLE" label="quantityReorderUnits" name="quantityReorderUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="manufacturerState" name="manufacturerState" size="10" type="string"/>
+<Field containerType="SINGLE" label="quantityCommitted" name="quantityCommitted" size="10" type="number"/>
+<Field containerType="SINGLE" label="vsoeDeferral" name="vsoeDeferral" size="10" type="string"/>
+<Field containerType="SINGLE" label="safetyStockLevel" name="safetyStockLevel" size="10" type="number"/>
+<Field containerType="SINGLE" label="includeChildren" name="includeChildren" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="manufacturerTariff" name="manufacturerTariff" size="10" type="string"/>
+<Field containerType="SINGLE" label="showDefaultDonationAmount" name="showDefaultDonationAmount" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="autoPreferredStockLevel" name="autoPreferredStockLevel" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="searchKeywords" name="searchKeywords" size="10" type="string"/>
+<Field containerType="SINGLE" label="handlingCost" name="handlingCost" size="10" type="number"/>
+<Field containerType="SINGLE" label="minimumQuantityUnits" name="minimumQuantityUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="cost" name="cost" size="10" type="number"/>
+<Field containerType="SINGLE" label="isDonationItem" name="isDonationItem" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="manufacturerAddr1" name="manufacturerAddr1" size="10" type="string"/>
+<Field containerType="SINGLE" label="vsoePermitDiscount" name="vsoePermitDiscount" size="10" type="string"/>
+<Field containerType="SINGLE" label="storeDescription" name="storeDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="enforceMinQtyInternally" name="enforceMinQtyInternally" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="upcCode" name="upcCode" size="10" type="string"/>
+<Field containerType="SINGLE" label="manufacturer" name="manufacturer" size="10" type="string"/>
+<Field containerType="SINGLE" label="autoLeadTime" name="autoLeadTime" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="vsoeSopGroup" name="vsoeSopGroup" size="10" type="string"/>
+<Field containerType="SINGLE" label="weight" name="weight" size="10" type="number"/>
+<Field containerType="SINGLE" label="defaultReturnCost" name="defaultReturnCost" size="10" type="number"/>
+<Field containerType="SINGLE" label="rate" name="rate" size="10" type="number"/>
+<Field containerType="SINGLE" label="quantityAvailable" name="quantityAvailable" size="10" type="number"/>
+<Field containerType="SINGLE" label="maxDonationAmount" name="maxDonationAmount" size="10" type="number"/>
+<Field containerType="SINGLE" label="specialsDescription" name="specialsDescription" size="10" type="string"/>
+<Field containerType="SINGLE" label="overallQuantityPricingType" name="overallQuantityPricingType" size="10" type="string"/>
+<Field containerType="SINGLE" label="useBins" name="useBins" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="quantityBackOrdered" name="quantityBackOrdered" size="10" type="number"/>
+<Field containerType="SINGLE" label="urlComponent" name="urlComponent" size="10" type="string"/>
+<Field containerType="SINGLE" label="internalId" name="internalId" size="10" type="string"/>
+<Field containerType="SINGLE" label="vsoeDelivered" name="vsoeDelivered" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="transferPrice" name="transferPrice" size="10" type="number"/>
+<Field containerType="SINGLE" label="manufacturerTaxId" name="manufacturerTaxId" size="10" type="string"/>
+<Field containerType="SINGLE" label="demandModifier" name="demandModifier" size="10" type="number"/>
+<Field containerType="SINGLE" label="lastPurchasePrice" name="lastPurchasePrice" size="10" type="number"/>
+<Field containerType="SINGLE" label="matrixType" name="matrixType" size="10" type="string"/>
+<Field containerType="SINGLE" label="invtClassification" name="invtClassification" size="10" type="string"/>
+<Field containerType="SINGLE" label="manufacturerCity" name="manufacturerCity" size="10" type="string"/>
+<Field containerType="SINGLE" label="scheduleBNumber" name="scheduleBNumber" size="10" type="string"/>
+<Field containerType="SINGLE" label="weightUnits" name="weightUnits" size="10" type="string"/>
+<Field containerType="SINGLE" label="displayName" name="displayName" size="10" type="string"/>
+<Field containerType="SINGLE" label="availableToPartners" name="availableToPartners" size="10" type="boolean"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="isGcoCompliant" name="isGcoCompliant" size="10" type="boolean"/>
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" type="long"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/INVENTORY_ITEM" _dataStructure="OBJECT" _id="__id" _type="Output" id="5c6fd4ac-a240-4966-99dd-c7e105e570f7">
+<Record fieldDelimiter="|" name="INVENTORY_ITEM" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/trackLandedCost" containerType="SINGLE" label="trackLandedCost" name="trackLandedCost" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/relatedItemsDescription" containerType="SINGLE" label="relatedItemsDescription" name="relatedItemsDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/purchaseDescription" containerType="SINGLE" label="purchaseDescription" name="purchaseDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/shippingCost" containerType="SINGLE" label="shippingCost" name="shippingCost" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/mpn" containerType="SINGLE" label="mpn" name="mpn" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/autoReorderPoint" containerType="SINGLE" label="autoReorderPoint" name="autoReorderPoint" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/onSpecial" containerType="SINGLE" label="onSpecial" name="onSpecial" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isInactive" containerType="SINGLE" label="isInactive" name="isInactive" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isSpecialOrderItem" containerType="SINGLE" label="isSpecialOrderItem" name="isSpecialOrderItem" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/costEstimateUnits" containerType="SINGLE" label="costEstimateUnits" name="costEstimateUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/vsoePrice" containerType="SINGLE" label="vsoePrice" name="vsoePrice" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/handlingCostUnits" containerType="SINGLE" label="handlingCostUnits" name="handlingCostUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/offerSupport" containerType="SINGLE" label="offerSupport" name="offerSupport" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/onHandValueMli" containerType="SINGLE" label="onHandValueMli" name="onHandValueMli" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityCommittedUnits" containerType="SINGLE" label="quantityCommittedUnits" name="quantityCommittedUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/stockDescription" containerType="SINGLE" label="stockDescription" name="stockDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/useMarginalRates" containerType="SINGLE" label="useMarginalRates" name="useMarginalRates" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturerZip" containerType="SINGLE" label="manufacturerZip" name="manufacturerZip" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/fixedLotSize" containerType="SINGLE" label="fixedLotSize" name="fixedLotSize" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/reorderMultiple" containerType="SINGLE" label="reorderMultiple" name="reorderMultiple" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/matchBillToReceipt" containerType="SINGLE" label="matchBillToReceipt" name="matchBillToReceipt" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/noPriceMessage" containerType="SINGLE" label="noPriceMessage" name="noPriceMessage" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/excludeFromSitemap" containerType="SINGLE" label="excludeFromSitemap" name="excludeFromSitemap" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/pricesIncludeTax" containerType="SINGLE" label="pricesIncludeTax" name="pricesIncludeTax" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isDropShipItem" containerType="SINGLE" label="isDropShipItem" name="isDropShipItem" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/reorderPoint" containerType="SINGLE" label="reorderPoint" name="reorderPoint" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/metaTagHtml" containerType="SINGLE" label="metaTagHtml" name="metaTagHtml" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/pageTitle" containerType="SINGLE" label="pageTitle" name="pageTitle" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/copyDescription" containerType="SINGLE" label="copyDescription" name="copyDescription" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityOnOrder" containerType="SINGLE" label="quantityOnOrder" name="quantityOnOrder" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/shoppingDotComCategory" containerType="SINGLE" label="shoppingDotComCategory" name="shoppingDotComCategory" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/costEstimate" containerType="SINGLE" label="costEstimate" name="costEstimate" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/nexTagCategory" containerType="SINGLE" label="nexTagCategory" name="nexTagCategory" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/sitemapPriority" containerType="SINGLE" label="sitemapPriority" name="sitemapPriority" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/safetyStockLevelDays" containerType="SINGLE" label="safetyStockLevelDays" name="safetyStockLevelDays" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/seasonalDemand" containerType="SINGLE" label="seasonalDemand" name="seasonalDemand" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/averageCost" containerType="SINGLE" label="averageCost" name="averageCost" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isTaxable" containerType="SINGLE" label="isTaxable" name="isTaxable" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/externalId" containerType="SINGLE" label="externalId" name="externalId" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/currency" containerType="SINGLE" label="currency" name="currency" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/originalItemSubtype" containerType="SINGLE" label="originalItemSubtype" name="originalItemSubtype" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isOnline" containerType="SINGLE" label="isOnline" name="isOnline" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/scheduleBQuantity" containerType="SINGLE" label="scheduleBQuantity" name="scheduleBQuantity" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/storeDetailedDescription" containerType="SINGLE" label="storeDetailedDescription" name="storeDetailedDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/invtCountInterval" containerType="SINGLE" label="invtCountInterval" name="invtCountInterval" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/outOfStockBehavior" containerType="SINGLE" label="outOfStockBehavior" name="outOfStockBehavior" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/featuredDescription" containerType="SINGLE" label="featuredDescription" name="featuredDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/costEstimateType" containerType="SINGLE" label="costEstimateType" name="costEstimateType" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/preferredStockLevel" containerType="SINGLE" label="preferredStockLevel" name="preferredStockLevel" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/countryOfManufacture" containerType="SINGLE" label="countryOfManufacture" name="countryOfManufacture" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/multManufactureAddr" containerType="SINGLE" label="multManufactureAddr" name="multManufactureAddr" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/storeDisplayName" containerType="SINGLE" label="storeDisplayName" name="storeDisplayName" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/outOfStockMessage" containerType="SINGLE" label="outOfStockMessage" name="outOfStockMessage" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/vendorName" containerType="SINGLE" label="vendorName" name="vendorName" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/weightUnit" containerType="SINGLE" label="weightUnit" name="weightUnit" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/dontShowPrice" containerType="SINGLE" label="dontShowPrice" name="dontShowPrice" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/salesDescription" containerType="SINGLE" label="salesDescription" name="salesDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/minimumQuantity" containerType="SINGLE" label="minimumQuantity" name="minimumQuantity" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/costUnits" containerType="SINGLE" label="costUnits" name="costUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/shipIndividually" containerType="SINGLE" label="shipIndividually" name="shipIndividually" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityAvailableUnits" containerType="SINGLE" label="quantityAvailableUnits" name="quantityAvailableUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/itemId" containerType="SINGLE" label="itemId" name="itemId" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/leadTime" containerType="SINGLE" label="leadTime" name="leadTime" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/totalValue" containerType="SINGLE" label="totalValue" name="totalValue" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/shopzillaCategoryId" containerType="SINGLE" label="shopzillaCategoryId" name="shopzillaCategoryId" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/preferredStockLevelUnits" containerType="SINGLE" label="preferredStockLevelUnits" name="preferredStockLevelUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/preferenceCriterion" containerType="SINGLE" label="preferenceCriterion" name="preferenceCriterion" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityOnHand" containerType="SINGLE" label="quantityOnHand" name="quantityOnHand" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/preferredStockLevelDays" containerType="SINGLE" label="preferredStockLevelDays" name="preferredStockLevelDays" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/originalItemType" containerType="SINGLE" label="originalItemType" name="originalItemType" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/producer" containerType="SINGLE" label="producer" name="producer" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/scheduleBCode" containerType="SINGLE" label="scheduleBCode" name="scheduleBCode" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/reorderPointUnits" containerType="SINGLE" label="reorderPointUnits" name="reorderPointUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/shippingCostUnits" containerType="SINGLE" label="shippingCostUnits" name="shippingCostUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/safetyStockLevelUnits" containerType="SINGLE" label="safetyStockLevelUnits" name="safetyStockLevelUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/costingMethodDisplay" containerType="SINGLE" label="costingMethodDisplay" name="costingMethodDisplay" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityOnOrderUnits" containerType="SINGLE" label="quantityOnOrderUnits" name="quantityOnOrderUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityOnHandUnits" containerType="SINGLE" label="quantityOnHandUnits" name="quantityOnHandUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/costingMethod" containerType="SINGLE" label="costingMethod" name="costingMethod" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityReorderUnits" containerType="SINGLE" label="quantityReorderUnits" name="quantityReorderUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturerState" containerType="SINGLE" label="manufacturerState" name="manufacturerState" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityCommitted" containerType="SINGLE" label="quantityCommitted" name="quantityCommitted" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/vsoeDeferral" containerType="SINGLE" label="vsoeDeferral" name="vsoeDeferral" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/safetyStockLevel" containerType="SINGLE" label="safetyStockLevel" name="safetyStockLevel" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/includeChildren" containerType="SINGLE" label="includeChildren" name="includeChildren" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturerTariff" containerType="SINGLE" label="manufacturerTariff" name="manufacturerTariff" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/showDefaultDonationAmount" containerType="SINGLE" label="showDefaultDonationAmount" name="showDefaultDonationAmount" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/autoPreferredStockLevel" containerType="SINGLE" label="autoPreferredStockLevel" name="autoPreferredStockLevel" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/searchKeywords" containerType="SINGLE" label="searchKeywords" name="searchKeywords" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/handlingCost" containerType="SINGLE" label="handlingCost" name="handlingCost" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/minimumQuantityUnits" containerType="SINGLE" label="minimumQuantityUnits" name="minimumQuantityUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/cost" containerType="SINGLE" label="cost" name="cost" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isDonationItem" containerType="SINGLE" label="isDonationItem" name="isDonationItem" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturerAddr1" containerType="SINGLE" label="manufacturerAddr1" name="manufacturerAddr1" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/vsoePermitDiscount" containerType="SINGLE" label="vsoePermitDiscount" name="vsoePermitDiscount" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/storeDescription" containerType="SINGLE" label="storeDescription" name="storeDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/enforceMinQtyInternally" containerType="SINGLE" label="enforceMinQtyInternally" name="enforceMinQtyInternally" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/upcCode" containerType="SINGLE" label="upcCode" name="upcCode" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturer" containerType="SINGLE" label="manufacturer" name="manufacturer" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/autoLeadTime" containerType="SINGLE" label="autoLeadTime" name="autoLeadTime" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/vsoeSopGroup" containerType="SINGLE" label="vsoeSopGroup" name="vsoeSopGroup" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/weight" containerType="SINGLE" label="weight" name="weight" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/defaultReturnCost" containerType="SINGLE" label="defaultReturnCost" name="defaultReturnCost" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/rate" containerType="SINGLE" label="rate" name="rate" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityAvailable" containerType="SINGLE" label="quantityAvailable" name="quantityAvailable" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/maxDonationAmount" containerType="SINGLE" label="maxDonationAmount" name="maxDonationAmount" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/specialsDescription" containerType="SINGLE" label="specialsDescription" name="specialsDescription" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/overallQuantityPricingType" containerType="SINGLE" label="overallQuantityPricingType" name="overallQuantityPricingType" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/useBins" containerType="SINGLE" label="useBins" name="useBins" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/quantityBackOrdered" containerType="SINGLE" label="quantityBackOrdered" name="quantityBackOrdered" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/urlComponent" containerType="SINGLE" label="urlComponent" name="urlComponent" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/internalId" containerType="SINGLE" label="internalId" name="internalId" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/vsoeDelivered" containerType="SINGLE" label="vsoeDelivered" name="vsoeDelivered" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/transferPrice" containerType="SINGLE" label="transferPrice" name="transferPrice" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturerTaxId" containerType="SINGLE" label="manufacturerTaxId" name="manufacturerTaxId" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/demandModifier" containerType="SINGLE" label="demandModifier" name="demandModifier" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/lastPurchasePrice" containerType="SINGLE" label="lastPurchasePrice" name="lastPurchasePrice" type="number"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/matrixType" containerType="SINGLE" label="matrixType" name="matrixType" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/invtClassification" containerType="SINGLE" label="invtClassification" name="invtClassification" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/manufacturerCity" containerType="SINGLE" label="manufacturerCity" name="manufacturerCity" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/scheduleBNumber" containerType="SINGLE" label="scheduleBNumber" name="scheduleBNumber" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/weightUnits" containerType="SINGLE" label="weightUnits" name="weightUnits" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/displayName" containerType="SINGLE" label="displayName" name="displayName" type="string"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/availableToPartners" containerType="SINGLE" label="availableToPartners" name="availableToPartners" type="boolean"/>
+<Field __sourcePath="{}/INVENTORY_ITEM/isGcoCompliant" containerType="SINGLE" label="isGcoCompliant" name="isGcoCompliant" type="boolean"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="CSV READER" guiWidth="0" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="true" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[CSV]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:element clover:name="INVENTORY_ITEM" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <trackLandedCost>$0.trackLandedCost</trackLandedCost>
+  <relatedItemsDescription>$0.relatedItemsDescription</relatedItemsDescription>
+  <purchaseDescription>$0.purchaseDescription</purchaseDescription>
+  <shippingCost>$0.shippingCost</shippingCost>
+  <mpn>$0.mpn</mpn>
+  <autoReorderPoint>$0.autoReorderPoint</autoReorderPoint>
+  <onSpecial>$0.onSpecial</onSpecial>
+  <isInactive>$0.isInactive</isInactive>
+  <isSpecialOrderItem>$0.isSpecialOrderItem</isSpecialOrderItem>
+  <costEstimateUnits>$0.costEstimateUnits</costEstimateUnits>
+  <vsoePrice>$0.vsoePrice</vsoePrice>
+  <handlingCostUnits>$0.handlingCostUnits</handlingCostUnits>
+  <offerSupport>$0.offerSupport</offerSupport>
+  <onHandValueMli>$0.onHandValueMli</onHandValueMli>
+  <quantityCommittedUnits>$0.quantityCommittedUnits</quantityCommittedUnits>
+  <stockDescription>$0.stockDescription</stockDescription>
+  <useMarginalRates>$0.useMarginalRates</useMarginalRates>
+  <manufacturerZip>$0.manufacturerZip</manufacturerZip>
+  <fixedLotSize>$0.fixedLotSize</fixedLotSize>
+  <reorderMultiple>$0.reorderMultiple</reorderMultiple>
+  <matchBillToReceipt>$0.matchBillToReceipt</matchBillToReceipt>
+  <noPriceMessage>$0.noPriceMessage</noPriceMessage>
+  <excludeFromSitemap>$0.excludeFromSitemap</excludeFromSitemap>
+  <pricesIncludeTax>$0.pricesIncludeTax</pricesIncludeTax>
+  <isDropShipItem>$0.isDropShipItem</isDropShipItem>
+  <reorderPoint>$0.reorderPoint</reorderPoint>
+  <metaTagHtml>$0.metaTagHtml</metaTagHtml>
+  <pageTitle>$0.pageTitle</pageTitle>
+  <copyDescription>$0.copyDescription</copyDescription>
+  <quantityOnOrder>$0.quantityOnOrder</quantityOnOrder>
+  <shoppingDotComCategory>$0.shoppingDotComCategory</shoppingDotComCategory>
+  <costEstimate>$0.costEstimate</costEstimate>
+  <nexTagCategory>$0.nexTagCategory</nexTagCategory>
+  <sitemapPriority>$0.sitemapPriority</sitemapPriority>
+  <safetyStockLevelDays>$0.safetyStockLevelDays</safetyStockLevelDays>
+  <seasonalDemand>$0.seasonalDemand</seasonalDemand>
+  <averageCost>$0.averageCost</averageCost>
+  <isTaxable>$0.isTaxable</isTaxable>
+  <externalId>$0.externalId</externalId>
+  <currency>$0.currency</currency>
+  <originalItemSubtype>$0.originalItemSubtype</originalItemSubtype>
+  <isOnline>$0.isOnline</isOnline>
+  <scheduleBQuantity>$0.scheduleBQuantity</scheduleBQuantity>
+  <storeDetailedDescription>$0.storeDetailedDescription</storeDetailedDescription>
+  <invtCountInterval>$0.invtCountInterval</invtCountInterval>
+  <outOfStockBehavior>$0.outOfStockBehavior</outOfStockBehavior>
+  <featuredDescription>$0.featuredDescription</featuredDescription>
+  <costEstimateType>$0.costEstimateType</costEstimateType>
+  <preferredStockLevel>$0.preferredStockLevel</preferredStockLevel>
+  <countryOfManufacture>$0.countryOfManufacture</countryOfManufacture>
+  <multManufactureAddr>$0.multManufactureAddr</multManufactureAddr>
+  <storeDisplayName>$0.storeDisplayName</storeDisplayName>
+  <outOfStockMessage>$0.outOfStockMessage</outOfStockMessage>
+  <vendorName>$0.vendorName</vendorName>
+  <weightUnit>$0.weightUnit</weightUnit>
+  <dontShowPrice>$0.dontShowPrice</dontShowPrice>
+  <salesDescription>$0.salesDescription</salesDescription>
+  <minimumQuantity>$0.minimumQuantity</minimumQuantity>
+  <costUnits>$0.costUnits</costUnits>
+  <shipIndividually>$0.shipIndividually</shipIndividually>
+  <quantityAvailableUnits>$0.quantityAvailableUnits</quantityAvailableUnits>
+  <itemId>$0.itemId</itemId>
+  <leadTime>$0.leadTime</leadTime>
+  <totalValue>$0.totalValue</totalValue>
+  <shopzillaCategoryId>$0.shopzillaCategoryId</shopzillaCategoryId>
+  <preferredStockLevelUnits>$0.preferredStockLevelUnits</preferredStockLevelUnits>
+  <preferenceCriterion>$0.preferenceCriterion</preferenceCriterion>
+  <quantityOnHand>$0.quantityOnHand</quantityOnHand>
+  <preferredStockLevelDays>$0.preferredStockLevelDays</preferredStockLevelDays>
+  <originalItemType>$0.originalItemType</originalItemType>
+  <producer>$0.producer</producer>
+  <scheduleBCode>$0.scheduleBCode</scheduleBCode>
+  <reorderPointUnits>$0.reorderPointUnits</reorderPointUnits>
+  <shippingCostUnits>$0.shippingCostUnits</shippingCostUnits>
+  <safetyStockLevelUnits>$0.safetyStockLevelUnits</safetyStockLevelUnits>
+  <costingMethodDisplay>$0.costingMethodDisplay</costingMethodDisplay>
+  <quantityOnOrderUnits>$0.quantityOnOrderUnits</quantityOnOrderUnits>
+  <quantityOnHandUnits>$0.quantityOnHandUnits</quantityOnHandUnits>
+  <costingMethod>$0.costingMethod</costingMethod>
+  <quantityReorderUnits>$0.quantityReorderUnits</quantityReorderUnits>
+  <manufacturerState>$0.manufacturerState</manufacturerState>
+  <quantityCommitted>$0.quantityCommitted</quantityCommitted>
+  <vsoeDeferral>$0.vsoeDeferral</vsoeDeferral>
+  <safetyStockLevel>$0.safetyStockLevel</safetyStockLevel>
+  <includeChildren>$0.includeChildren</includeChildren>
+  <manufacturerTariff>$0.manufacturerTariff</manufacturerTariff>
+  <showDefaultDonationAmount>$0.showDefaultDonationAmount</showDefaultDonationAmount>
+  <autoPreferredStockLevel>$0.autoPreferredStockLevel</autoPreferredStockLevel>
+  <searchKeywords>$0.searchKeywords</searchKeywords>
+  <handlingCost>$0.handlingCost</handlingCost>
+  <minimumQuantityUnits>$0.minimumQuantityUnits</minimumQuantityUnits>
+  <cost>$0.cost</cost>
+  <isDonationItem>$0.isDonationItem</isDonationItem>
+  <manufacturerAddr1>$0.manufacturerAddr1</manufacturerAddr1>
+  <vsoePermitDiscount>$0.vsoePermitDiscount</vsoePermitDiscount>
+  <storeDescription>$0.storeDescription</storeDescription>
+  <enforceMinQtyInternally>$0.enforceMinQtyInternally</enforceMinQtyInternally>
+  <upcCode>$0.upcCode</upcCode>
+  <manufacturer>$0.manufacturer</manufacturer>
+  <autoLeadTime>$0.autoLeadTime</autoLeadTime>
+  <vsoeSopGroup>$0.vsoeSopGroup</vsoeSopGroup>
+  <weight>$0.weight</weight>
+  <defaultReturnCost>$0.defaultReturnCost</defaultReturnCost>
+  <rate>$0.rate</rate>
+  <quantityAvailable>$0.quantityAvailable</quantityAvailable>
+  <maxDonationAmount>$0.maxDonationAmount</maxDonationAmount>
+  <specialsDescription>$0.specialsDescription</specialsDescription>
+  <overallQuantityPricingType>$0.overallQuantityPricingType</overallQuantityPricingType>
+  <useBins>$0.useBins</useBins>
+  <quantityBackOrdered>$0.quantityBackOrdered</quantityBackOrdered>
+  <urlComponent>$0.urlComponent</urlComponent>
+  <internalId>$0.internalId</internalId>
+  <vsoeDelivered>$0.vsoeDelivered</vsoeDelivered>
+  <transferPrice>$0.transferPrice</transferPrice>
+  <manufacturerTaxId>$0.manufacturerTaxId</manufacturerTaxId>
+  <demandModifier>$0.demandModifier</demandModifier>
+  <lastPurchasePrice>$0.lastPurchasePrice</lastPurchasePrice>
+  <matrixType>$0.matrixType</matrixType>
+  <invtClassification>$0.invtClassification</invtClassification>
+  <manufacturerCity>$0.manufacturerCity</manufacturerCity>
+  <scheduleBNumber>$0.scheduleBNumber</scheduleBNumber>
+  <weightUnits>$0.weightUnits</weightUnits>
+  <displayName>$0.displayName</displayName>
+  <availableToPartners>$0.availableToPartners</availableToPartners>
+  <isGcoCompliant>$0.isGcoCompliant</isGcoCompliant>
+</clover:element>]]></attr>
+<attr name="__typeName"><![CDATA[INVENTORY_ITEM]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/netsuite/add-record]]></attr>
+<attr name="__connectorName"><![CDATA[Netsuite]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'INVENTORY_ITEM' -&gt; 'INVENTORY_ITEM'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : num2str(input.__id));
+//END -> DO NOT REMOVE
+output.trackLandedCost = input.trackLandedCost;
+output.relatedItemsDescription = input.relatedItemsDescription;
+output.purchaseDescription = input.purchaseDescription;
+output.shippingCost = input.shippingCost;
+output.mpn = input.mpn;
+output.autoReorderPoint = input.autoReorderPoint;
+output.onSpecial = input.onSpecial;
+output.isInactive = input.isInactive;
+output.isSpecialOrderItem = input.isSpecialOrderItem;
+output.costEstimateUnits = input.costEstimateUnits;
+output.vsoePrice = input.vsoePrice;
+output.handlingCostUnits = input.handlingCostUnits;
+output.offerSupport = input.offerSupport;
+output.onHandValueMli = input.onHandValueMli;
+output.quantityCommittedUnits = input.quantityCommittedUnits;
+output.stockDescription = input.stockDescription;
+output.useMarginalRates = input.useMarginalRates;
+output.manufacturerZip = input.manufacturerZip;
+output.fixedLotSize = input.fixedLotSize;
+output.reorderMultiple = input.reorderMultiple;
+output.matchBillToReceipt = input.matchBillToReceipt;
+output.noPriceMessage = input.noPriceMessage;
+output.excludeFromSitemap = input.excludeFromSitemap;
+output.pricesIncludeTax = input.pricesIncludeTax;
+output.isDropShipItem = input.isDropShipItem;
+output.reorderPoint = input.reorderPoint;
+output.metaTagHtml = input.metaTagHtml;
+output.pageTitle = input.pageTitle;
+output.copyDescription = input.copyDescription;
+output.quantityOnOrder = input.quantityOnOrder;
+output.shoppingDotComCategory = input.shoppingDotComCategory;
+output.costEstimate = input.costEstimate;
+output.nexTagCategory = input.nexTagCategory;
+output.sitemapPriority = input.sitemapPriority;
+output.safetyStockLevelDays = input.safetyStockLevelDays;
+output.seasonalDemand = input.seasonalDemand;
+output.averageCost = input.averageCost;
+output.isTaxable = input.isTaxable;
+output.externalId = input.externalId;
+output.currency = input.currency;
+output.originalItemSubtype = input.originalItemSubtype;
+output.isOnline = input.isOnline;
+output.scheduleBQuantity = input.scheduleBQuantity;
+output.storeDetailedDescription = input.storeDetailedDescription;
+output.invtCountInterval = input.invtCountInterval;
+output.outOfStockBehavior = input.outOfStockBehavior;
+output.featuredDescription = input.featuredDescription;
+output.costEstimateType = input.costEstimateType;
+output.preferredStockLevel = input.preferredStockLevel;
+output.countryOfManufacture = input.countryOfManufacture;
+output.multManufactureAddr = input.multManufactureAddr;
+output.storeDisplayName = input.storeDisplayName;
+output.outOfStockMessage = input.outOfStockMessage;
+output.vendorName = input.vendorName;
+output.weightUnit = input.weightUnit;
+output.dontShowPrice = input.dontShowPrice;
+output.salesDescription = input.salesDescription;
+output.minimumQuantity = input.minimumQuantity;
+output.costUnits = input.costUnits;
+output.shipIndividually = input.shipIndividually;
+output.quantityAvailableUnits = input.quantityAvailableUnits;
+output.itemId = input.itemId;
+output.leadTime = input.leadTime;
+output.totalValue = input.totalValue;
+output.shopzillaCategoryId = input.shopzillaCategoryId;
+output.preferredStockLevelUnits = input.preferredStockLevelUnits;
+output.preferenceCriterion = input.preferenceCriterion;
+output.quantityOnHand = input.quantityOnHand;
+output.preferredStockLevelDays = input.preferredStockLevelDays;
+output.originalItemType = input.originalItemType;
+output.producer = input.producer;
+output.scheduleBCode = input.scheduleBCode;
+output.reorderPointUnits = input.reorderPointUnits;
+output.shippingCostUnits = input.shippingCostUnits;
+output.safetyStockLevelUnits = input.safetyStockLevelUnits;
+output.costingMethodDisplay = input.costingMethodDisplay;
+output.quantityOnOrderUnits = input.quantityOnOrderUnits;
+output.quantityOnHandUnits = input.quantityOnHandUnits;
+output.costingMethod = input.costingMethod;
+output.quantityReorderUnits = input.quantityReorderUnits;
+output.manufacturerState = input.manufacturerState;
+output.quantityCommitted = input.quantityCommitted;
+output.vsoeDeferral = input.vsoeDeferral;
+output.safetyStockLevel = input.safetyStockLevel;
+output.includeChildren = input.includeChildren;
+output.manufacturerTariff = input.manufacturerTariff;
+output.showDefaultDonationAmount = input.showDefaultDonationAmount;
+output.autoPreferredStockLevel = input.autoPreferredStockLevel;
+output.searchKeywords = input.searchKeywords;
+output.handlingCost = input.handlingCost;
+output.minimumQuantityUnits = input.minimumQuantityUnits;
+output.cost = input.cost;
+output.isDonationItem = input.isDonationItem;
+output.manufacturerAddr1 = input.manufacturerAddr1;
+output.vsoePermitDiscount = input.vsoePermitDiscount;
+output.storeDescription = input.storeDescription;
+output.enforceMinQtyInternally = input.enforceMinQtyInternally;
+output.upcCode = input.upcCode;
+output.manufacturer = input.manufacturer;
+output.autoLeadTime = input.autoLeadTime;
+output.vsoeSopGroup = input.vsoeSopGroup;
+output.weight = input.weight;
+output.defaultReturnCost = input.defaultReturnCost;
+output.rate = input.rate;
+output.quantityAvailable = input.quantityAvailable;
+output.maxDonationAmount = input.maxDonationAmount;
+output.specialsDescription = input.specialsDescription;
+output.overallQuantityPricingType = input.overallQuantityPricingType;
+output.useBins = input.useBins;
+output.quantityBackOrdered = input.quantityBackOrdered;
+output.urlComponent = input.urlComponent;
+output.internalId = input.internalId;
+output.vsoeDelivered = input.vsoeDelivered;
+output.transferPrice = input.transferPrice;
+output.manufacturerTaxId = input.manufacturerTaxId;
+output.demandModifier = input.demandModifier;
+output.lastPurchasePrice = input.lastPurchasePrice;
+output.matrixType = input.matrixType;
+output.invtClassification = input.invtClassification;
+output.manufacturerCity = input.manufacturerCity;
+output.scheduleBNumber = input.scheduleBNumber;
+output.weightUnits = input.weightUnits;
+output.displayName = input.displayName;
+output.availableToPartners = input.availableToPartners;
+output.isGcoCompliant = input.isGcoCompliant;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="a54e8d3c-f978-4a7b-a0d4-94df31c16803" outPort="Port 0 (output)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="5c6fd4ac-a240-4966-99dd-c7e105e570f7" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+</Phase>
+</Graph>
