@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="listen-to-box">
+    <flow SubFlow="false" name="listenForEvents" entity-id="flow#1">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property value="1" name="auxiliary;index"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/box/endpoint" name="Box (Streaming)" entity-id="Box (Streaming)#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="http://www.mulesoft.org/schema/mule/box/listen-events" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="Box" name="config-ref"/>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="2" name="auxiliary;index"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="Variable" entity-id="Variable#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="defaultValue" name="variableName"/>
+                    <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="0" name="value"/>
+                    <property value="3" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/objectstore/objectstore-connector" name="ObjectStore" entity-id="ObjectStore#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="http://www.mulesoft.org/schema/mule/objectstore/retrieve" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="#[flowVars['defaultValue']]" name="defaultValue-ref"/>
+                    <property value="ObjectStore" name="config-ref"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="streamPosition" name="key"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/box/box-connector" name="Box" entity-id="Box#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="limit"/>
+                    <property value="#[payload]" name="streamPosition"/>
+                    <property value="http://www.mulesoft.org/schema/mule/box/get-events" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="streamType"/>
+                    <property value="#[message.inboundProperties['boxAccessTokenId']]" name="accessTokenId"/>
+                    <property value="Box" name="config-ref"/>
+                    <property value="5" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/objectstore/objectstore-connector" name="ObjectStore" entity-id="ObjectStore#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="true" name="overwrite"/>
+                    <property value="http://www.mulesoft.org/schema/mule/objectstore/store" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="ObjectStore" name="config-ref"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property value="streamPosition" name="key"/>
+                    <property value="#[payload.nextStreamPosition]" name="value-ref"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="PARSE EVENTS TO LIST" entity-id="Groovy#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property value="7" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="return payload.entries" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="8" name="auxiliary;wrapIn"/>
+                        <property value="8" name="auxiliary;index"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="return payload.entries" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="8" name="auxiliary;wrapIn"/>
+                        <property value="8" name="auxiliary;index"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <scope type="http://www.mulesoft.org/schema/mule/core/foreach" name="For Each" entity-id="For Each#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="counterVariableName"/>
+                    <property name="rootMessageVariableName"/>
+                    <property name="batchSize"/>
+                    <property name="collection"/>
+                    <property value="9" name="auxiliary;index"/>
+                </properties>
+                <compartment entity-id="compartment#1">
+                    <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="New Event #[payload.eventType] on resource  #[payload.source.name]  with ID #[payload.source.id]  by user: #[payload.createdBy.login] at #[payload.recordedAt]" name="message"/>
+<property value="" name="category"/>
+<property value="INFO" name="level"/>
+<property name="updated"/>
+<property value="10" name="auxiliary;index"/>
+                            </properties>
+                            <description></description>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

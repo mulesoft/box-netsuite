@@ -2,4 +2,5 @@
 .project
 .classpath
 .studio
+src/main/app/mule-app.properties
 

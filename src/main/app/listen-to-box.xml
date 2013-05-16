@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:objectstore="http://www.mulesoft.org/schema/mule/objectstore" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns:box="http://www.mulesoft.org/schema/mule/box" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/box http://www.mulesoft.org/schema/mule/box/2.0/mule-box.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/objectstore http://www.mulesoft.org/schema/mule/objectstore/1.0/mule-objectstore.xsd">
+      <flow name="listenForEvents" doc:name="listenForEvents">
+        <box:listen-events config-ref="Box" doc:name="Box (Streaming)"/>
+        <set-variable variableName="defaultValue" value="0" doc:name="Variable"/>
+        <objectstore:retrieve config-ref="ObjectStore" key="streamPosition" defaultValue-ref="#[flowVars['defaultValue']]" doc:name="ObjectStore"/>
+        <box:get-events config-ref="Box" streamPosition="#[payload]" accessTokenId="#[message.inboundProperties['boxAccessTokenId']]" doc:name="Box"/>
+        <objectstore:store config-ref="ObjectStore" key="streamPosition" value-ref="#[payload.nextStreamPosition]" overwrite="true" doc:name="ObjectStore"/>
+        <scripting:transformer doc:name="PARSE EVENTS TO LIST">
+            <scripting:script engine="Groovy"><![CDATA[return payload.entries]]></scripting:script>
+        </scripting:transformer>
+<!--         <scripting:transformer doc:name="FILTER FOR FILES IN SPECIFIC FOLDER">
+            <scripting:script engine="Groovy"><![CDATA[return payload.findAll{it.source?.type == "file" && it.source?.parent.name == "Foo"}
+		]]></scripting:script>
+        </scripting:transformer> -->
+        <foreach doc:name="For Each">
+            <logger message="New Event #[payload.eventType] on resource  #[payload.source.name]  with ID #[payload.source.id]  by user: #[payload.createdBy.login] at #[payload.recordedAt]" level="INFO" doc:name="Logger"/>
+        </foreach>
+    </flow>
+</mule>
