@@ -2,5 +2,5 @@
 .project
 .classpath
 .studio
-src/main/app/mule-app.properties
+./src/main/app/mule-app.properties
 
