@@ -115,6 +115,12 @@
                 <properties>
                     <property value="STARTING OAUTH AUTH CYCLE" name="event-name"/>
                     <property value="11" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;0">
+                        <property value="${fullDomain}" name="value"/>
+                        <property value="CH domain for this App" name="key"/>
+                        <property value="12" name="auxiliary;index"/>
+                        <property value="12" name="auxiliary;wrapIn"/>
+                    </property-collection>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/box/box-connector" name="Box" entity-id="Box#1">
@@ -125,14 +131,14 @@
                     <property name="state"/>
                     <property value="http://www.mulesoft.org/schema/mule/box/authorize" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Box" name="config-ref"/>
-                    <property value="12" name="auxiliary;index"/>
+                    <property value="13" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#2">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="COMPLETED OAUTH CYCLE" name="event-name"/>
-                    <property value="13" name="auxiliary;index"/>
+                    <property value="14" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
@@ -143,7 +149,7 @@
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="14" name="auxiliary;index"/>
+            <property value="15" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
             <graphicalData height="0" width="0" y="0" x="0"/>
@@ -172,7 +178,7 @@
                     <property name="user"/>
                     <property name="responseTimeout"/>
                     <property name="mimeType"/>
-                    <property value="15" name="auxiliary;index"/>
+                    <property value="16" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
@@ -182,11 +188,11 @@
                     <property value="http://www.mulesoft.org/schema/mule/box/get-folder" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="${box.accessTokenID}" name="accessTokenId"/>
                     <property value="Box" name="config-ref"/>
-                    <property value="16" name="auxiliary;index"/>
+                    <property value="17" name="auxiliary;index"/>
                     <property value="#[message.inboundProperties['folder-id']]" name="folderId"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#1">
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Format Box Response" entity-id="Object to JSON#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property name="sourceClass"/>
@@ -195,7 +201,7 @@
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
                     <property name="mimeType"/>
-                    <property value="17" name="auxiliary;index"/>
+                    <property value="18" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
@@ -206,7 +212,7 @@
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="18" name="auxiliary;index"/>
+            <property value="19" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#3">
             <graphicalData height="0" width="0" y="0" x="0"/>
@@ -235,7 +241,7 @@
                     <property name="user"/>
                     <property name="responseTimeout"/>
                     <property name="mimeType"/>
-                    <property value="19" name="auxiliary;index"/>
+                    <property value="20" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
@@ -245,7 +251,7 @@
                     <property value="DOWNLOADING FOLDER WITH ID : #[message.inboundProperties['doc-id']]" name="message"/>
                     <property name="category"/>
                     <property value="INFO" name="level"/>
-                    <property value="20" name="auxiliary;index"/>
+                    <property value="21" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/box/box-connector" name="Box" entity-id="Box#3">
@@ -253,20 +259,20 @@
                 <properties>
                     <property value="#[message.inboundProperties['doc-id']]" name="fileId"/>
                     <property value="http://www.mulesoft.org/schema/mule/box/download" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="${box.accessTokenID}" name="accessTokenId"/>
+                    <property name="accessTokenId"/>
                     <property value="Box" name="config-ref"/>
-                    <property value="21" name="auxiliary;index"/>
+                    <property value="22" name="auxiliary;index"/>
                     <property name="version"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="parseFile" entity-id="Object to String#1">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Stream to File" entity-id="Object to String#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property value="US-ASCII" name="encoding"/>
                     <property value="text/plain" name="mimeType"/>
-                    <property value="22" name="auxiliary;index"/>
+                    <property value="23" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
@@ -275,17 +281,17 @@
                     <property value="#[payload]" name="message"/>
                     <property name="category"/>
                     <property value="INFO" name="level"/>
-                    <property value="23" name="auxiliary;index"/>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="postToNS" entity-id="Flow Reference#1">
-                <graphicalData height="0" width="0" y="0" x="0"/>
-                <properties>
-                    <property value="postToNetSuite" name="name"/>
                     <property value="24" name="auxiliary;index"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="formatResponse" entity-id="Object to JSON#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="Post File To NS" entity-id="Flow Reference#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="postToNetSuite" name="name"/>
+                    <property value="25" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Format NS Response" entity-id="Object to JSON#2">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property name="sourceClass"/>
@@ -294,7 +300,7 @@
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
                     <property name="mimeType"/>
-                    <property value="25" name="auxiliary;index"/>
+                    <property value="26" name="auxiliary;index"/>
                 </properties>
             </pattern>
         </lane>
@@ -305,7 +311,7 @@
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="26" name="auxiliary;index"/>
+            <property value="27" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#4">
             <graphicalData height="0" width="0" y="0" x="0"/>
@@ -329,7 +335,7 @@
                     <property name="encoding"/>
                     <property name="outputPattern"/>
                     <property name="mimeType"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                     <property value="10000" name="responseTimeout"/>
                     <property name="connector-ref"/>
                 </properties>
@@ -340,17 +346,10 @@
                     <property value="Consumed new file" name="message"/>
                     <property name="category"/>
                     <property value="INFO" name="level"/>
-                    <property value="28" name="auxiliary;index"/>
-                </properties>
-            </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#3">
-                <graphicalData height="0" width="0" y="0" x="0"/>
-                <properties>
-                    <property value="RECEIVED INBOUND ACCOUNTS FILE" name="event-name"/>
                     <property value="29" name="auxiliary;index"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="postFileToNS" entity-id="Flow Reference#2">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="Post File to NS" entity-id="Flow Reference#2">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="postToNetSuite" name="name"/>
@@ -401,7 +400,7 @@
 <property value="34" name="auxiliary;index"/>
                             </properties>
                         </pattern>
-                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#4">
+                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="PROCESSING NEXT ACCT NAME : #[payload.name]" name="event-name"/>
@@ -445,7 +444,7 @@
 <property value="38" name="auxiliary;index"/>
                             </properties>
                         </pattern>
-                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#5">
+                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#4">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="FILTERING OUT EXISTING ACCOUNT..." name="event-name"/>
@@ -468,7 +467,7 @@
 <property name="nullReturnsTrue"/>
                             </properties>
                         </pattern>
-                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#6">
+                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#5">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="ACCOUNT NEEDS TO BE CREATED" name="event-name"/>
@@ -529,7 +528,7 @@
 <property value="47" name="auxiliary;index"/>
                             </properties>
                         </pattern>
-                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#7">
+                        <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom Business event" entity-id="Custom Business event#6">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="RESPONSE FROM NETSUITE" name="event-name"/>

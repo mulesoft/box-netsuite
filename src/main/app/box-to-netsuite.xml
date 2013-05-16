@@ -25,48 +25,31 @@ http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/
     <data-mapper:config name="x_grf" transformationGraphPath="x.grf" doc:name="DataMapper"/>
     <flow name="authorize" doc:name="authorize">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="auth" doc:name="HTTP"/>
-        <tracking:custom-event event-name="STARTING OAUTH AUTH CYCLE" doc:name="Custom Business Event"/>
+        <tracking:custom-event event-name="STARTING OAUTH AUTH CYCLE" doc:name="Custom Business Event">
+            <tracking:meta-data key="CH domain for this App" value="${fullDomain}"/>
+        </tracking:custom-event>
         <box:authorize config-ref="Box" doc:name="Box"/>
         <tracking:custom-event event-name="COMPLETED OAUTH CYCLE" doc:name="Custom Business event"/>
     </flow>
-    <!-- <flow name="listenForEvents" doc:name="listenForEvents">
-        <box:listen-events config-ref="Box" doc:name="Box (Streaming)"/>
-        <set-variable variableName="defaultValue" value="0" doc:name="Variable"/>
-        <objectstore:retrieve config-ref="ObjectStore" key="streamPosition" defaultValue-ref="#[flowVars['defaultValue']]" doc:name="ObjectStore"/>
-        <box:get-events config-ref="Box" streamPosition="#[payload]" accessTokenId="#[message.inboundProperties['boxAccessTokenId']]" doc:name="Box"/>
-        <objectstore:store config-ref="ObjectStore" key="streamPosition" value-ref="#[payload.nextStreamPosition]" overwrite="true" doc:name="ObjectStore"/>
-        <scripting:transformer doc:name="FILTER ITEM UPLOAD EVENTS">
-            <scripting:script engine="Groovy"><![CDATA[return payload.entries.findAll{it.eventType =='ITEM_UPLOAD'}
-		]]></scripting:script>
-        </scripting:transformer>
-        <scripting:transformer doc:name="FILTER FOR FILES IN SPECIFIC FOLDER">
-            <scripting:script engine="Groovy"><![CDATA[return payload.findAll{it.source?.type == "file" && it.source?.parent.name == "Foo"}
-		]]></scripting:script>
-        </scripting:transformer>
-        <foreach doc:name="For Each">
-            <logger message="New File  #[payload.source.name]  with ID #[payload.source.id]  was uploaded By #[payload.createdBy.login]. Now DOWNLOADING IT...." level="INFO" doc:name="Logger"/>
-            <logger message="RESPONSE FROM FILE DOWNLOAD : #[payload]" level="INFO" doc:name="Logger"/>
-        </foreach>
-    </flow> -->
     <flow name="getFolder" doc:name="getFolder">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="boxfolder" doc:name="HTTP"/>
         <box:get-folder config-ref="Box" accessTokenId="${box.accessTokenID}" doc:name="Box" folderId="#[message.inboundProperties['folder-id']]"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <json:object-to-json-transformer doc:name="Format Box Response"/>
     </flow>
     <flow name="download" doc:name="download">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="boxdownload" doc:name="HTTP"/>
         <logger message="DOWNLOADING FOLDER WITH ID : #[message.inboundProperties['doc-id']]" level="INFO" doc:name="Logger"/>
-        <box:download config-ref="Box" accessTokenId="${box.accessTokenID}" doc:name="Box" fileId="#[message.inboundProperties['doc-id']]"/>
-        <object-to-string-transformer encoding="US-ASCII" mimeType="text/plain" doc:name="parseFile"/>
+        <box:download config-ref="Box"  doc:name="Box" fileId="#[message.inboundProperties['doc-id']]"/>
+        <object-to-string-transformer encoding="US-ASCII" mimeType="text/plain" doc:name="Stream to File"/>
         <logger level="INFO" doc:name="Logger" message="#[payload]"/>
-        <flow-ref name="postToNetSuite" doc:name="postToNS"/>
-        <json:object-to-json-transformer doc:name="formatResponse"/>
+        <flow-ref name="postToNetSuite" doc:name="Post File To NS"/>
+        <json:object-to-json-transformer doc:name="Format NS Response"/>
     </flow>
+   
     <flow name="testNSMapping" doc:name="testNSMapping">
         <file:inbound-endpoint path="src/main/resources/input" moveToDirectory="src/main/resources/output" pollingFrequency="5000" responseTimeout="10000" doc:name="File" tracking:enable-default-events="true"/>
         <logger message="Consumed new file" level="INFO" doc:name="Logger"/>
-        <tracking:custom-event event-name="RECEIVED INBOUND ACCOUNTS FILE" doc:name="Custom Business event"/>
-        <flow-ref name="postToNetSuite" doc:name="postFileToNS"/>
+        <flow-ref name="postToNetSuite" doc:name="Post File to NS"/>
     </flow>
     <sub-flow name="postToNetSuite" doc:name="postToNetSuite">
         <data-mapper:transform config-ref="csvtomap_grf" doc:name="DataMapper"/>
