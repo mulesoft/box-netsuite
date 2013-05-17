@@ -38,10 +38,8 @@ http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/
     </flow>
     <flow name="download" doc:name="download">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="boxdownload" doc:name="HTTP"/>
-        <logger message="DOWNLOADING FOLDER WITH ID : #[message.inboundProperties['doc-id']]" level="INFO" doc:name="Logger"/>
-        <box:download config-ref="Box"  doc:name="Box" fileId="#[message.inboundProperties['doc-id']]"/>
+        <box:download config-ref="Box"  accessTokenId="${box.accessTokenID}" doc:name="Box" fileId="8108424996"/>
         <object-to-string-transformer encoding="US-ASCII" mimeType="text/plain" doc:name="Stream to File"/>
-        <logger level="INFO" doc:name="Logger" message="#[payload]"/>
         <flow-ref name="postToNetSuite" doc:name="Post File To NS"/>
         <json:object-to-json-transformer doc:name="Format NS Response"/>
     </flow>
